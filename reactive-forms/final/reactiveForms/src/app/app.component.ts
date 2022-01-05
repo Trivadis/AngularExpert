@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmployeeService } from './services/employee.service';
 import { EmployeeValidators } from './Validators/employee.validator';
 
 @Component({
@@ -8,7 +9,10 @@ import { EmployeeValidators } from './Validators/employee.validator';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private employeeService: EmployeeService
+  ) {}
 
   form: FormGroup = this.fb.group(
     {
@@ -23,7 +27,7 @@ export class AppComponent {
       email: [
         '',
         [Validators.required, EmployeeValidators.emailValidator],
-        //   EmployeeValidators.checkEmailUnique(this.service),
+        EmployeeValidators.checkEmailUnique(this.employeeService),
       ],
       emailConfirm: [
         '',
