@@ -113,6 +113,12 @@ form {
   }
 }
 
+fieldset {
+  border: 1px solid #808080;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
 @-webkit-keyframes load1 {
   0%,
   80%,
