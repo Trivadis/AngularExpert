@@ -306,7 +306,18 @@
 </div>
 
 <div class="content" role="main">
+  <h2>Reactive Form Example</h2>
   <div class="card-container">
+    <div class="role-section">
+      <span> Current role: {{ currentUserRole }} </span>
+      <button
+        type="button"
+        class="btn btn-ok btn-primary form-button"
+        (click)="changeUserRole()"
+      >
+        Set as {{ currentUserRole === "user" ? "Site Admin" : "User" }}
+      </button>
+    </div>
     <form [formGroup]="form">
       <div class="form-group">
         <label class="col-sm-2 col-form-label">Firstname</label>
@@ -404,7 +415,13 @@
         </div>
       </div>
       <div class="form-group">
-        <button type="button" class="btn btn-ok btn-primary add-button form-button" (click)="addAddress()">Add Address</button>
+        <button
+          type="button"
+          class="btn btn-ok btn-primary add-button form-button"
+          (click)="addAddress()"
+        >
+          Add Address
+        </button>
         <div formArrayName="addresses">
           <div *ngFor="let address of addresses.controls; let i = index">
             <div [formGroupName]="i" class="address-group">
@@ -419,19 +436,74 @@
               <label class="col-sm-2 col-form-label">City</label>
               <div class="col-sm-10">
                 <input
-                type="text"
-                formControlName="city"
-                class="form-control"
+                  type="text"
+                  formControlName="city"
+                  class="form-control"
                 />
-                <button class="col-sm-2 btn btn-ok btn-danger form-button" (click)="removeAddress(i)">Remove</button>
+                <button
+                  class="col-sm-2 btn btn-ok btn-danger form-button"
+                  (click)="removeAddress(i)"
+                >
+                  Remove
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-
+      <hr />
+      <div class="form-group">
+        <div *ngIf="dynamicFields; else loader">
+          <fieldset>
+            <legend>Dynamic Form</legend>
+            <div
+              class="row mb-1"
+              *ngFor="let dynamicField of dynamicFields; trackBy: trackById"
+            >
+              <div class="col" formGroupName="dynamicForm">
+                <ng-container [ngSwitch]="dynamicField.type">
+                  <label
+                    class="form-label"
+                    *ngIf="dynamicField.type !== formFieldTypes.checkbox"
+                  >
+                    {{ dynamicField.label }}
+                  </label>
+                  <ng-container *ngSwitchCase="formFieldTypes.text">
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      [formControlName]="dynamicField.fieldId"
+                    />
+                  </ng-container>
+                  <ng-container *ngSwitchCase="formFieldTypes.checkbox">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        [formControlName]="dynamicField.fieldId"
+                      />
+                      <label class="form-check-label">{{
+                        dynamicField.label
+                      }}</label>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <ng-template #loader>
+          <div class="loader-wrap">
+            <div class="loader"></div>
+          </div>
+        </ng-template>
+      </div>
       <div class="form-actions">
-        <button type="button" class="btn btn-ok btn-primary form-button" (click)="submit()">
+        <button
+          type="button"
+          class="btn btn-ok btn-primary form-button"
+          (click)="submit()"
+        >
           Submit
         </button>
       </div>

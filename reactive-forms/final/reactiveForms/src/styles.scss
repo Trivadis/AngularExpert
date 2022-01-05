@@ -103,6 +103,16 @@ form {
   border: 1px solid darkgray;
 }
 
+.role-section {
+  display: flex;
+  align-items: center;
+  span {
+    margin-right: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+}
+
 @-webkit-keyframes load1 {
   0%,
   80%,
