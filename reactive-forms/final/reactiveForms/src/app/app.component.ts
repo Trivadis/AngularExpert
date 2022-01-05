@@ -25,6 +25,10 @@ export class AppComponent {
         [Validators.required, EmployeeValidators.emailValidator],
         //   EmployeeValidators.checkEmailUnique(this.service),
       ],
+      emailConfirm: [
+        '',
+        [Validators.required, EmployeeValidators.emailValidator],
+      ],
     },
     {
       validators: EmployeeValidators.checkEmailsMatch,
