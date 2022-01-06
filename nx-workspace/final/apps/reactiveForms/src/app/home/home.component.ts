@@ -1,7 +1,7 @@
-import { FormFieldConfig } from './models/form-field-config.model';
-import { catchError } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { FormFieldConfig } from '../models/form-field-config.model';
 import {
   FormArray,
   FormBuilder,
@@ -9,16 +9,16 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { EmployeeService } from './services/employee.service';
-import { EmployeeValidators } from './validators/employee.validator';
-import { FormFieldType } from './models/form-field-types.enum';
+import { FormFieldType } from '../models/form-field-types.enum';
+import { EmployeeService } from '../services/employee.service';
+import { EmployeeValidators } from '../validators/employee.validator';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class HomeComponent implements OnInit {
   form!: FormGroup;
   dynamicFields?: FormFieldConfig[];
   isLoading = false;

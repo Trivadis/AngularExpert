@@ -119,6 +119,19 @@ fieldset {
   padding: 0.5rem;
 }
 
+.home-link {
+  color: white !important;
+  margin-right: 1.5rem;
+}
+.about-link {
+  @extend .home-link;
+  margin-left: 1rem;
+}
+
+section {
+  width: 100%;
+}
+
 @-webkit-keyframes load1 {
   0%,
   80%,
