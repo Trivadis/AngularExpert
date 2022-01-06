@@ -17,7 +17,9 @@ const routes: Routes = [
   {
     path: 'about',
     loadChildren: () =>
-      import('./about/about.module').then((m) => m.AboutModule),
+      import('@reactive-forms/reactive-forms/about').then(
+        (m) => m.ReactiveFormsAboutModule
+      ),
   },
   {
     path: '**',

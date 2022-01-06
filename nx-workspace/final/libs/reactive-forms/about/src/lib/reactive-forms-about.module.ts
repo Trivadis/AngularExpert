@@ -11,6 +11,7 @@ const routes = [
 ];
 
 @NgModule({
+  declarations: [AboutComponent],
   imports: [CommonModule, RouterModule.forChild(routes)],
 })
 export class ReactiveFormsAboutModule {}

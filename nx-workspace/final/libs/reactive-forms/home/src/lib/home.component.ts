@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { FormFieldConfig } from '../../../../shared/models/src/lib/form-field-config.model';
 import {
   FormArray,
   FormBuilder,
@@ -9,12 +8,12 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { FormFieldType } from '../../../../../apps/reactiveForms/src/app/models/form-field-types.enum';
-import { EmployeeService } from '../../../../shared/services/src/lib/employee.service';
 import { EmployeeValidators } from './validators/employee.validator';
+import { EmployeeService } from '@reactive-forms/shared/services';
+import { FormFieldConfig, FormFieldType } from '@reactive-forms/shared/models';
 
 @Component({
-  selector: 'app-home',
+  selector: 'reactive-forms',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })

@@ -26,7 +26,7 @@
           }
         }
       },
-      "tags": ["'scope:reactive-forms", ""]
+      "tags": ["scope:reactive-forms", "type:feature"]
     },
     "reactive-forms-home": {
       "projectType": "library",
@@ -52,7 +52,7 @@
           }
         }
       },
-      "tags": ["'scope:reactiveForms", ""]
+      "tags": ["scope:reactive-forms", "type:feature"]
     },
     "reactiveForms": {
       "projectType": "application",
@@ -177,7 +177,7 @@
           }
         }
       },
-      "tags": ["'scope:shared", ""]
+      "tags": ["scope:shared", "type:model"]
     },
     "shared-services": {
       "root": "libs/shared/services",
@@ -200,7 +200,7 @@
           }
         }
       },
-      "tags": ["'scope:shared", ""]
+      "tags": ["scope:shared", "type:util"]
     }
   }
 }

@@ -13,8 +13,15 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
+                "sourceTag": "scope:shared",
+                "onlyDependOnLibsWithTags": ["scope:shared"]
+              },
+              {
+                "sourceTag": "scope:reactive-forms",
+                "onlyDependOnLibsWithTags": [
+                  "scope:shared",
+                  "scope:reactive-forms"
+                ]
               }
             ]
           }

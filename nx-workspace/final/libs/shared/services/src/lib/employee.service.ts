@@ -8,8 +8,6 @@ import { FormFieldConfig, FormFieldType } from '@reactive-forms/shared/models';
   providedIn: 'root',
 })
 export class EmployeeService {
-  constructor() {}
-
   checkEmailUnique(email: string) {
     // service call for example
     return of(email).pipe(
