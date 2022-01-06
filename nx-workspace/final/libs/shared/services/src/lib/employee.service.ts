@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { of, Observable } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
-import { FormFieldConfig } from '../models/form-field-config.model';
-import { FormFieldType } from '../models/form-field-types.enum';
+import { FormFieldConfig, FormFieldType } from '@reactive-forms/shared/models';
 
 @Injectable({
   providedIn: 'root',

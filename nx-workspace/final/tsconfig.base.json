@@ -17,11 +17,17 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
-    "paths": {},
+    "lib": ["es2020", "dom"],
+    "paths": {
+      "@reactive-forms/reactive-forms/about": [
+        "libs/reactive-forms/about/src/index.ts"
+      ],
+      "@reactive-forms/reactive-forms/home": [
+        "libs/reactive-forms/home/src/index.ts"
+      ],
+      "@reactive-forms/shared/models": ["libs/shared/models/src/index.ts"],
+      "@reactive-forms/shared/services": ["libs/shared/services/src/index.ts"]
+    },
     "rootDir": "."
   },
   "angularCompilerOptions": {

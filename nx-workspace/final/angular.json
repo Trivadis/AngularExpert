@@ -1,8 +1,59 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
   "projects": {
+    "reactive-forms-about": {
+      "projectType": "library",
+      "root": "libs/reactive-forms/about",
+      "sourceRoot": "libs/reactive-forms/about/src",
+      "prefix": "reactive-forms",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/reactive-forms/about"],
+          "options": {
+            "jestConfig": "libs/reactive-forms/about/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/reactive-forms/about/src/**/*.ts",
+              "libs/reactive-forms/about/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["'scope:reactive-forms", ""]
+    },
+    "reactive-forms-home": {
+      "projectType": "library",
+      "root": "libs/reactive-forms/home",
+      "sourceRoot": "libs/reactive-forms/home/src",
+      "prefix": "reactive-forms",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/reactive-forms/home"],
+          "options": {
+            "jestConfig": "libs/reactive-forms/home/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/reactive-forms/home/src/**/*.ts",
+              "libs/reactive-forms/home/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": ["'scope:reactiveForms", ""]
+    },
     "reactiveForms": {
       "projectType": "application",
       "schematics": {
@@ -99,13 +150,57 @@
               "apps/reactiveForms/src/favicon.ico",
               "apps/reactiveForms/src/assets"
             ],
-            "styles": [
-              "apps/reactiveForms/src/styles.scss"
-            ],
+            "styles": ["apps/reactiveForms/src/styles.scss"],
             "scripts": []
           }
         }
       }
+    },
+    "shared-models": {
+      "root": "libs/shared/models",
+      "sourceRoot": "libs/shared/models/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/shared/models/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/models"],
+          "options": {
+            "jestConfig": "libs/shared/models/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": ["'scope:shared", ""]
+    },
+    "shared-services": {
+      "root": "libs/shared/services",
+      "sourceRoot": "libs/shared/services/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/shared/services/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/services"],
+          "options": {
+            "jestConfig": "libs/shared/services/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": ["'scope:shared", ""]
     }
   }
 }

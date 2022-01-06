@@ -1,6 +1,6 @@
-import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 import { map } from 'rxjs/operators';
-import { EmployeeService } from '../services/employee.service';
+import { EmployeeService } from '@reactive-forms/shared/services';
 
 export class EmployeeValidators {
   static checkEmailsMatch(control: AbstractControl) {
