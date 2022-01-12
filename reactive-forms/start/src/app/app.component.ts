@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EmployeeValidators } from './Validators/employee.validator';
+
+import { EmployeeValidators } from './validators/employee.validator';
 
 @Component({
   selector: 'app-root',
@@ -37,5 +38,14 @@ export class AppComponent {
   }
   get emailConfirm() {
     return this.form.get('emailConfirm');
+  }
+
+  submit() {
+    this.form.markAllAsTouched();
+    if (this.form.valid) {
+      console.log('Submitting form values: ', this.form.getRawValue());
+    } else {
+      console.error('Form is invalid. Cannot submit...');
+    }
   }
 }

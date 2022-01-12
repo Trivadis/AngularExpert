@@ -1,7 +1,5 @@
-import { FormFieldConfig } from './models/form-field-config.model';
-import { catchError } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
+
 import {
   FormArray,
   FormBuilder,
@@ -9,9 +7,13 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { EmployeeService } from './services/employee.service';
-import { EmployeeValidators } from './Validators/employee.validator';
+import { of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
+import { FormFieldConfig } from './models/form-field-config.model';
 import { FormFieldType } from './models/form-field-types.enum';
+import { EmployeeService } from './services/employee.service';
+import { EmployeeValidators } from './validators/employee.validator';
 
 @Component({
   selector: 'app-root',
@@ -52,6 +54,7 @@ export class AppComponent implements OnInit {
           [Validators.required, EmployeeValidators.emailValidator],
         ],
         addresses: this.fb.array([]),
+        rating: [],
       },
       {
         validators: EmployeeValidators.checkEmailsMatch,
@@ -81,7 +84,7 @@ export class AppComponent implements OnInit {
   submit() {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      console.log('Submitting form values: ', this.form.getRawValue);
+      console.log('Submitting form values: ', this.form.getRawValue());
     } else {
       console.error('Form is invalid. Cannot submit...');
     }
