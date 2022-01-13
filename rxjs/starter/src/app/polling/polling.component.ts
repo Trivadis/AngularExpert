@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, takeUntil } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { PollingService } from './polling.service';
 
