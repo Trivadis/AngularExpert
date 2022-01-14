@@ -1,0 +1,40 @@
+<div class="content">
+  <h2>Employees</h2>
+  <div class="card-container">
+    <div class="role-section">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Abbr</th>
+            <th>E-Mail</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let employee of employees$ | async"
+            [appHighlight]="'yellow'"
+          >
+            <td>
+              {{ employee.id }}
+            </td>
+            <td>
+              {{ employee.name }}
+            </td>
+            <td>
+              {{ employee.name | appAbbr }}
+            </td>
+            <td>
+              {{ employee.email }}
+            </td>
+            <td>
+              <a [routerLink]="[employee.id]">Edit</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
