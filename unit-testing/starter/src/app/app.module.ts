@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
+import { EmployeeComponent } from './components/employee/employee.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { AbbrPipe } from './pipes/abbr.pipe';
@@ -18,6 +19,7 @@ import { AbbrPipe } from './pipes/abbr.pipe';
     WelcomeComponent,
     AbbrPipe,
     HighlightDirective,
+    EmployeeComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],

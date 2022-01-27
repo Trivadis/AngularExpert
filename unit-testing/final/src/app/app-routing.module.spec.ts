@@ -7,18 +7,23 @@ import { AppModule } from './app.module';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 
 describe('Router tests', () => {
+  let router: Router;
+
   //setup
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule.withRoutes(routes), AppModule],
     });
   });
+  beforeEach(() => {
+    router = TestBed.inject(Router);
+  });
 
   //specs
   it(
     'can navigate to employees (async)',
     waitForAsync(() => {
-      TestBed.inject(Router)
+      router
         .navigate(['/employees'])
         .then(() => {
           expect(location.pathname.endsWith('/employees')).toBe(true);
@@ -29,7 +34,7 @@ describe('Router tests', () => {
 
   it('can navigate to employees (fakeAsync/tick)', fakeAsync(() => {
     let fixture = TestBed.createComponent(EmployeeListComponent);
-    TestBed.inject(Router).navigate(['/employees']);
+    router.navigate(['/employees']);
     fixture.detectChanges();
     //execute all pending asynchronous calls
     tick();
@@ -37,7 +42,7 @@ describe('Router tests', () => {
   }));
 
   it('can navigate to employees (done)', (done) => {
-    TestBed.inject(Router)
+    router
       .navigate(['/employees'])
       .then(() => {
         expect(location.pathname.endsWith('/employees')).toBe(true);
@@ -49,7 +54,7 @@ describe('Router tests', () => {
   it(
     'can navigate to employee details',
     waitForAsync(() => {
-      TestBed.inject(Router)
+      router
         .navigate(['/employees/1'])
         .then(() => {
           expect(location.pathname.endsWith('/employees/1')).toBe(true);
