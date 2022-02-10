@@ -1,23 +1,20 @@
+import { Component, OnInit } from '@angular/core';
 import {
   concatMapTo,
   fromEvent,
-  map,
   Observable,
   partition,
   repeatWhen,
   shareReplay,
-  Subject,
   takeUntil,
-  tap,
   timer,
 } from 'rxjs';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { PollingService } from './polling.service';
+import { log } from '../helpers/rxjs.operator';
+import { PollingService } from '../services/polling.service';
 
 @Component({
   selector: 'app-polling',
   templateUrl: './polling.component.html',
-  styleUrls: ['./polling.component.scss'],
 })
 export class PollingComponent implements OnInit {
   catUrl$?: Observable<any>;
@@ -38,6 +35,7 @@ export class PollingComponent implements OnInit {
 
     this.catUrl$ = timer(0, 5000).pipe(
       concatMapTo(catAPI$),
+      log('cat'),
       takeUntil(pageHidden$),
       repeatWhen(() => pageVisible$)
     );

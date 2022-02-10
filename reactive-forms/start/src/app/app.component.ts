@@ -6,7 +6,6 @@ import { EmployeeValidators } from './validators/employee.validator';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   constructor(private fb: FormBuilder) {}

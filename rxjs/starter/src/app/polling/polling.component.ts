@@ -1,11 +1,10 @@
-import { Observable, takeUntil } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { PollingService } from './polling.service';
+import { PollingService } from '../services/polling.service';
 
 @Component({
   selector: 'app-polling',
   templateUrl: './polling.component.html',
-  styleUrls: ['./polling.component.scss'],
 })
 export class PollingComponent implements OnInit {
   catUrl$?: Observable<any>;
