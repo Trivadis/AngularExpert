@@ -1,16 +1,13 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Joke } from '../models/joke';
-import { CatsPhoto } from '../models/cats-photo';
-
-
-
+import { Injectable } from '@angular/core';
+import { CatsPhoto } from '../models/cats-photo.model';
+import { Joke } from '../models/joke.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   /**
    * Randomly returns daddy jokes from: https://icanhazdadjoke.com
@@ -24,6 +21,8 @@ export class DataService {
    * Returns random cats photos
    */
   getCats() {
-    return this.httpClient.get<CatsPhoto>('https://api.thecatapi.com/v1/images/search');
+    return this.httpClient.get<CatsPhoto>(
+      'https://api.thecatapi.com/v1/images/search'
+    );
   }
 }

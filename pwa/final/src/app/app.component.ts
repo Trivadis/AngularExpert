@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { SwPush } from '@angular/service-worker';
 import { Observable } from 'rxjs';
-import { Joke } from './models/joke';
+import { Joke } from './models/joke.model';
 import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'Angular PWA';
