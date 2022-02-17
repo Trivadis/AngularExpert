@@ -33,9 +33,7 @@ describe('Router tests', () => {
   );
 
   it('can navigate to employees (fakeAsync/tick)', fakeAsync(() => {
-    let fixture = TestBed.createComponent(EmployeeListComponent);
     router.navigate(['/employees']);
-    fixture.detectChanges();
     //execute all pending asynchronous calls
     tick();
     expect(location.pathname.endsWith('/employees')).toBe(true);

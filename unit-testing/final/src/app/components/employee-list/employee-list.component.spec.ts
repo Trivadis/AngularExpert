@@ -35,6 +35,7 @@ describe('Component: EmployeeList', () => {
     component.employees$.subscribe((list) => {
       expect(list.length).withContext('expected employees').toBe(2);
     });
+    expect(mockEmployeeService.getAll).toHaveBeenCalled();
     expect(mockEmployeeService.getAll.calls.count())
       .withContext('one call')
       .toBe(1);
