@@ -1,3 +1,4 @@
+import { APP_BASE_HREF } from '@angular/common';
 import { fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -13,6 +14,7 @@ describe('Router tests', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule.withRoutes(routes), AppModule],
+      providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
     });
   });
   beforeEach(() => {
