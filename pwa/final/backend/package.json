@@ -1,0 +1,20 @@
+{
+  "name": "pwa-demo-backend",
+  "version": "1.0.0",
+  "description": "A simple REST API to register for Web Notifications",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js --config nodemon.json"
+  },
+  "author": "francesco.leardini@accenture.com",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "web-push": "^3.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}

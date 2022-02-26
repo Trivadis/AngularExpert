@@ -216,7 +216,7 @@
   />
   <span>Welcome to the Angular PWA Course</span>
     <div class="spacer"></div>
-    <button class="register-button" *ngIf="swPush.isEnabled; else noSw" (click)="subscribeToNotifications()">Subscribe</button>
+    <button class="register-button" *ngIf="swPush.isEnabled; else noSw" (click)="subscribeToNotifications()">{{isSubscribed ? 'Unsubscribe' : 'Subscribe'}}</button>
     <ng-template #noSw>
       <span class="register-msg">Service Worker not enabled!</span>
     </ng-template>
