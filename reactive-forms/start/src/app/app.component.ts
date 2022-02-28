@@ -20,10 +20,6 @@ export class AppComponent {
     ],
     lastname: ['', Validators.required],
     email: ['', [Validators.required, EmployeeValidators.emailValidator]],
-    emailConfirm: [
-      '',
-      [Validators.required, EmployeeValidators.emailValidator],
-    ],
   });
 
   get firstname() {
