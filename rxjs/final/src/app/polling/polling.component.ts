@@ -6,6 +6,7 @@ import {
   partition,
   repeatWhen,
   shareReplay,
+  switchMapTo,
   takeUntil,
   timer,
 } from 'rxjs';
@@ -22,9 +23,7 @@ export class PollingComponent implements OnInit {
   constructor(private dataService: PollingService) {}
 
   ngOnInit(): void {
-    const onVisibilityChange$ = fromEvent(document, 'visibilitychange').pipe(
-      shareReplay({ refCount: true, bufferSize: 1 })
-    );
+    const onVisibilityChange$ = fromEvent(document, 'visibilitychange');
 
     const [pageVisible$, pageHidden$] = partition(
       onVisibilityChange$,
@@ -34,7 +33,7 @@ export class PollingComponent implements OnInit {
     const catAPI$ = this.dataService.getCats();
 
     this.catUrl$ = timer(0, 5000).pipe(
-      concatMapTo(catAPI$),
+      switchMapTo(catAPI$),
       log('cat'),
       takeUntil(pageHidden$),
       repeatWhen(() => pageVisible$)
