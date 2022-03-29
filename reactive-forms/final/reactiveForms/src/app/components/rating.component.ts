@@ -1,6 +1,5 @@
-import { Component, forwardRef, Input, Output } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { EventEmitter } from 'stream';
 
 @Component({
   selector: 'app-rating',
