@@ -82,8 +82,10 @@ export class AppComponent implements OnInit {
 
   submit() {
     this.form.markAllAsTouched();
+
     if (this.form.valid) {
-      console.log('Submitting form values: ', this.form.getRawValue());
+      console.log('Submitting form values: ', this.form.value);
+      console.log('Submitting form RAW values: ', this.form.getRawValue());
     } else {
       console.error('Form is invalid. Cannot submit...');
     }

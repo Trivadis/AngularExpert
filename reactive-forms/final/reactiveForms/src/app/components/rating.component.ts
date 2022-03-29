@@ -1,12 +1,17 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, forwardRef, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { EventEmitter } from 'stream';
 
 @Component({
   selector: 'app-rating',
   template: `
-    <button [disabled]="disabled" (click)="decrement()">-</button>
+    <button [disabled]="disabled || isLowestValue" (click)="decrement()">
+      -
+    </button>
     {{ counterValue }}
-    <button [disabled]="disabled" (click)="increment()">+</button>
+    <button [disabled]="disabled || isHighestValue" (click)="increment()">
+      +
+    </button>
   `,
   providers: [
     {
@@ -20,15 +25,31 @@ export class RatingComponent implements ControlValueAccessor {
   @Input()
   disabled = false;
 
-  private _counterValue = 0;
+  @Input()
+  lowerLimit = 0;
+
+  @Input()
+  upperLimit = 5;
+
   @Input()
   get counterValue() {
     return this._counterValue;
   }
+
   set counterValue(val) {
     this._counterValue = val;
     this.propagateChange(val);
   }
+
+  get isLowestValue() {
+    return this.counterValue === this.lowerLimit;
+  }
+
+  get isHighestValue() {
+    return this.counterValue === this.upperLimit;
+  }
+
+  private _counterValue = 0;
 
   // Function to call when the rating changes.
   propagateChange: any = () => {};
@@ -52,12 +73,16 @@ export class RatingComponent implements ControlValueAccessor {
   }
 
   increment() {
-    this.counterValue++;
-    this.propagateTouched();
+    if (this.counterValue < this.upperLimit) {
+      this.counterValue++;
+      this.propagateTouched();
+    }
   }
 
   decrement() {
-    this.counterValue--;
-    this.propagateTouched();
+    if (this.counterValue > this.lowerLimit) {
+      this.counterValue--;
+      this.propagateTouched();
+    }
   }
 }

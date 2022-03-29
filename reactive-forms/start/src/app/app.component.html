@@ -98,6 +98,7 @@
           type="button"
           class="btn btn-ok btn-primary form-button"
           (click)="submit()"
+          [disabled]="!form.valid"
         >
           Submit
         </button>

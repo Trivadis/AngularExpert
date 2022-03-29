@@ -126,6 +126,8 @@
           Add Address
         </button>
         <div formArrayName="addresses">
+
+
           <div *ngFor="let address of addresses.controls; let i = index">
             <div [formGroupName]="i" class="address-group">
               <label class="col-sm-2 col-form-label">Street</label>
@@ -152,6 +154,8 @@
               </div>
             </div>
           </div>
+
+          
         </div>
       </div>
       <div class="form-group mb-2">
@@ -215,10 +219,12 @@
         <button
           type="button"
           class="btn btn-ok btn-primary form-button"
-          (click)="submit()"
+          (click)="submit()"          
+          [disabled]="!form.valid"
         >
           Submit
         </button>
+        <span *ngIf="email?.pending"> Checking....</span>
       </div>
     </form>
   </div>
