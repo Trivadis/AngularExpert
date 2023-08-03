@@ -6,11 +6,11 @@ import { Employee } from 'src/app/models/employee.model';
 @Injectable({ providedIn: 'root' })
 export class EmployeeService {
   private employees: Employee[] = [
-    { id: 1, name: 'Thomas Gassmann', email: 'thomas.gassmann@trivadis.com' },
+    { id: 1, name: 'Thomas Gassmann', email: 'thomas.gassmann@accenture.com' },
     {
       id: 2,
       name: 'Francesco Leardini',
-      email: 'francesco.leardini@trivadis.com',
+      email: 'francesco.leardini@accenture.com',
     },
   ];
   constructor(private httpClient: HttpClient) {}

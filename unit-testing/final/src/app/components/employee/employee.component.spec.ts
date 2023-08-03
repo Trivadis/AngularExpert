@@ -29,7 +29,7 @@ describe('Component: Employee', () => {
       employeeComp.employee = {
         id: 1,
         name: 'Thomas Gassmann',
-        email: 'thomas.gassmann@trivadis.com',
+        email: 'thomas.gassmann@accenture.com',
       };
       //trigger change detection
       fixture.detectChanges();

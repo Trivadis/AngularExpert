@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const webpush = require('web-push');
 const vapidKeys = webpush.generateVAPIDKeys();
 webpush.setVapidDetails(
-    'mailto:info@trivadis.com',
+    'mailto:info@accenture.com',
     vapidKeys.publicKey,
     vapidKeys.privateKey
 );
@@ -25,7 +25,7 @@ let pushIntervalID;
 
 const notificationMsg = {
     "notification": {
-        "title": "Angular PWA @ Trivadis!",
+        "title": "Angular PWA @ Accenture!",
         "body": "Push Notifications are very cool!",
         "vibrate": [100, 50, 100],
         "actions": [
@@ -35,9 +35,9 @@ const notificationMsg = {
         "requireInteraction": true,
         "data": {
             "onActionClick": {
-                "default": { "operation": "openWindow", "url": "https://www.trivadis.com" },
-                "twitter": { "operation": "openWindow", "url": "https://twitter.com/Trivadis" },
-                "linkedin": { "operation": "openWindow", "url": "https://www.linkedin.com/company/trivadis-part-of-accenture/mycompany/" }
+                "default": { "operation": "openWindow", "url": "https://www.accenture.com" },
+                "twitter": { "operation": "openWindow", "url": "https://twitter.com/accenture" },
+                "linkedin": { "operation": "openWindow", "url": "https://www.linkedin.com/company/accenture" }
             }
         }
     }

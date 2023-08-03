@@ -13,12 +13,12 @@ describe('Component: EmployeeList', () => {
       {
         id: 1,
         name: 'Thomas Gassmann',
-        email: 'thomas.gassmann@trivadis.com',
+        email: 'thomas.gassmann@accenture.com',
       },
       {
         id: 2,
         name: 'Francesco Leardini',
-        email: 'francesco.leardini@trivadis.com',
+        email: 'francesco.leardini@accenture.com',
       },
     ];
 

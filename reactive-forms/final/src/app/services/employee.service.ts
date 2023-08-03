@@ -52,7 +52,7 @@ export class EmployeeService {
         {
           fieldId: 'companyName',
           type: FormFieldType.text,
-          label: 'Company Name',
+          label: 'Company Name*',
           value: 'Accenture',
           required: true,
         },
