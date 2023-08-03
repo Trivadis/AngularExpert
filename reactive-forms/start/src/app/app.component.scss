@@ -4,3 +4,19 @@
   padding: 1.5rem;
   max-width: 600px;
 }
+
+form {
+  width: 50%;
+  padding-right: 1.5rem;
+  flex: 1;
+  input {
+    width: 100%;
+  }
+}
+
+.img-wrap {
+  width: 50%;
+  img {
+    width: 100%;
+  }
+}
