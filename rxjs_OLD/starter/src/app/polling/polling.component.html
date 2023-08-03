@@ -1,0 +1,21 @@
+<h2 class="exercise-title">Implement polling logic</h2>
+<p class="goal-section">
+  <strong>GOAL: </strong> create a polling function using RxJS operators that stops when the page is not
+  visible and automatically starts again once the page gets visible again.
+  <br /><br />
+  Use the Page Visibility API events to detect the page visibility.
+  <br /><br />
+  The URL: https://api.thecatapi.com/v1/images/search is used to load
+  the images below and can be used as backend API for the exercise.
+</p>
+<div class="card card-center">
+  <h2 class="card-title">A cat photo</h2>
+  <div *ngIf="catUrl$ | async as catData; else loader">
+    <img [src]="catData[0]?.url" alt="Cat image" loading="auto" />
+  </div>
+  <ng-template #loader>
+    <div class="loader-wrap">
+      <div class="loader"></div>
+    </div>
+  </ng-template>
+</div>
