@@ -4,9 +4,8 @@ import {
   fromEvent,
   Observable,
   partition,
-  repeatWhen,
-  shareReplay,
-  switchMapTo,
+  repeat,
+  switchMap,
   takeUntil,
   timer,
 } from 'rxjs';
@@ -33,10 +32,10 @@ export class PollingComponent implements OnInit {
     const catAPI$ = this.dataService.getCats();
 
     this.catUrl$ = timer(0, 5000).pipe(
-      switchMapTo(catAPI$),
+      switchMap(() => catAPI$),
       log('cat'),
       takeUntil(pageHidden$),
-      repeatWhen(() => pageVisible$)
+      repeat({ delay: () => pageVisible$ })
     );
   }
 }
