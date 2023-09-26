@@ -50,7 +50,7 @@ export class AppComponent implements OnInit, OnDestroy {
           serverPublicKey: this.VAPID_PUBLIC,
         })
         .then((subObj: any) => {
-          console.log('Granted notifications permission.');
+          console.log('Granted notifications permission: ', subObj);
           this.notificationService
             .subscribeForNotifications(subObj)
             .pipe(takeUntil(this.destroy$))

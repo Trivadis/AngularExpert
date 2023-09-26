@@ -22,6 +22,8 @@ export class PollingComponent implements OnInit {
   constructor(private dataService: PollingService) {}
 
   ngOnInit(): void {
+    this.dataService.keepTryingOnError().subscribe();
+    
     const onVisibilityChange$ = fromEvent(document, 'visibilitychange');
 
     const [pageVisible$, pageHidden$] = partition(
