@@ -52,10 +52,8 @@
   .content {
     display: flex;
     margin: 82px auto 32px;
-    padding: 0 16px;
-    max-width: 960px;
-    flex-direction: column;
-    align-items: center;
+    padding: 0 16px 32px 16px;
+    max-width: 1024px;
   }
 
   svg.material-icons {
@@ -173,26 +171,15 @@
       <mat-icon class="fav-icon">favorite</mat-icon>
       <span class="fav-count">{{favCount()}}</span>
     </span>
-    <span class="span-counter">Shipping: 30 CHF</span>
+    <span class="span-counter">Shipping: {{shippingCost}}</span>
 </div>
 
 <div class="content" role="main">
-  <div *ngIf="availableBeers$ | async as beers">
+  <div *ngIf="availableBeers$ | async as beers" class="flex-center">
     <div *ngFor="let beer of beers">
       <app-card [beer]="beer"></app-card>
     </div>
   </div>
 </div>
 
-  <!-- Resources 
-  <h2>Resources</h2>-->
-  <div class="card-container">
-    <a class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
-      <span>Learn Angular</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    
-    </a>
-  </div>
-
-
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
