@@ -1,1 +1,5 @@
-<p>card works!</p>
+<div *ngIf="beer">
+    <div>{{beer.name}}</div>
+    <div><img [src]="beer.image_url" alt="" width="90"></div>
+    <div><span>Pairing: </span>{{beer.food_pairing}}</div>
+</div>

@@ -42,8 +42,9 @@
     margin: 0 16px;
   }
 
-  .toolbar .total-counter {
+  .toolbar .span-counter {
     display: block;
+    position: relative;
     margin-right: 4rem;
   }
 
@@ -168,23 +169,20 @@
   />
   <span>Angular Signals</span>
     <div class="spacer"></div>
-    <span class="total-counter">Beers selected: </span>
+    <span class="span-counter" title="Favorite beers">
+      <mat-icon class="fav-icon">favorite</mat-icon>
+      <span class="fav-count">{{favCount()}}</span>
+    </span>
+    <span class="span-counter">Shipping: 30 CHF</span>
 </div>
 
 <div class="content" role="main">
-
-    <div *ngIf="availableBeers$ | async as beers">
-      <div *ngFor="let beer of beers">
-        <div>{{beer.name}}</div>
-        <div><img [src]="beer.image_url" alt="" width="90"></div>
-        <div><span>Pairing: </span>{{beer.food_pairing}}</div>
-      </div>
+  <div *ngIf="availableBeers$ | async as beers">
+    <div *ngFor="let beer of beers">
+      <app-card [beer]="beer"></app-card>
     </div>
-
-
+  </div>
 </div>
-
-
 
   <!-- Resources 
   <h2>Resources</h2>-->
