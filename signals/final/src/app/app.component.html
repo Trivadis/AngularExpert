@@ -42,10 +42,15 @@
     margin: 0 16px;
   }
 
-  .toolbar .span-counter {
+  .toolbar .span-counter,
+  .toolbar .fav-counter {
     display: block;
     position: relative;
     margin-right: 4rem;
+  }
+
+  .discount {
+    width: 130px;
   }
 
 
@@ -53,7 +58,8 @@
     display: flex;
     margin: 82px auto 32px;
     padding: 0 16px 32px 16px;
-    max-width: 1024px;
+    max-width: 2048px;
+    width: 90%;
   }
 
   svg.material-icons {
@@ -140,21 +146,6 @@
     color: #125699;
   }
 
-  /* Responsive Styles */
-  @media screen and (max-width: 767px) {
-    .card-container > *:not(.circle-link) {
-      width: 100%;
-    }
-
-    .card:not(.highlight-card) {
-      height: 16px;
-      margin: 8px 0;
-    }
-
-    .card.highlight-card span {
-      margin-left: 72px;
-    }
-  }
 
 </style>
 
@@ -167,19 +158,18 @@
   />
   <span>Angular Signals</span>
     <div class="spacer"></div>
-    <span class="span-counter" title="Favorite beers">
+    <span class="fav-counter" title="Favorite beers">
       <mat-icon class="fav-icon">favorite</mat-icon>
       <span class="fav-count">{{favCount()}}</span>
     </span>
-    <span class="span-counter">Shipping: {{shippingCost}}</span>
+    <span class="span-counter discount">Shipping: {{shippingCost}}</span>
 </div>
 
 <div class="content" role="main">
   <div *ngIf="availableBeers$ | async as beers" class="flex-center">
     <div *ngFor="let beer of beers">
-      <app-card [beer]="beer"></app-card>
+      <app-card [beer]="beer" (onSelected)="addLike($event)"></app-card>
     </div>
   </div>
 </div>
 
-<!-- <router-outlet></router-outlet> -->

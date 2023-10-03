@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import { BeerResponse } from '../model/beer.model';
@@ -15,10 +15,13 @@ import {MatButtonModule} from '@angular/material/button';
 export class CardComponent {
   @Input() beer?: BeerResponse;
 
+  @Output() onSelected = new EventEmitter<boolean>();
+
   isLiked = false;
 
   like() {
     this.isLiked = !this.isLiked;
+    this.onSelected.emit(this.isLiked);
   }
 
 }

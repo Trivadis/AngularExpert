@@ -1,6 +1,10 @@
 .card {
     max-width: 200px;
     height: 490px;
+    @media screen and (max-width: 480px) {
+        width: 100%;
+        max-width: none;
+    }
     .title {
         --max-lines: 1;
         max-height: calc(1.4rem * var(--max-lines));
@@ -16,6 +20,7 @@
         justify-content: space-around;
     }
     .description {
+        min-height: 70px;
         --max-lines: 3;
         max-height: calc(1.4rem * var(--max-lines));
         overflow: hidden;

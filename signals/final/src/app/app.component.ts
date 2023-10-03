@@ -1,4 +1,4 @@
-import { Component, OnInit, WritableSignal, effect, inject, signal } from '@angular/core';
+import { Component, OnInit, WritableSignal, computed, effect, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { BeerService } from './services/beer.service';
@@ -23,8 +23,8 @@ export class AppComponent implements OnInit {
 
   constructor() {
     effect(() => {
-      console.log(`The count is: ${this.favCount()})`);
-      if (this.favCount() > 3) {
+      console.log(`The count is: ${this.favCount()}`);
+      if (this.favCount() > 4) {
         this.shippingCost = 'Free!';
       } else {
         this.shippingCost = '30 CHF';
@@ -34,5 +34,9 @@ export class AppComponent implements OnInit {
   
   ngOnInit() {
     this.availableBeers$ = this.beerService.getBeerList();
+  }
+
+  addLike(isLike: boolean) {
+    this.favCount.update(count => isLike ? count + 1 : count - 1);
   }
 }
