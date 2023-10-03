@@ -1,7 +1,7 @@
 <div *ngIf="beer">
     <mat-card class="card">
         <mat-card-header>
-          <mat-card-title>{{beer.name}}</mat-card-title>
+          <mat-card-title><span class="title">{{beer.name}}</span></mat-card-title>
         </mat-card-header>
         <div class="img-wrap">
             <img class="beer-img" mat-card-image [src]="beer.image_url" height="200" alt="Photo of a beer">
@@ -18,7 +18,7 @@
         <p>
             <b>Origin: </b>{{beer.first_brewed}}
         </p>
-          <p class="pairing">
+          <p class="description">
             {{beer.description}}
           </p>
         </mat-card-content>

@@ -1,6 +1,13 @@
 .card {
     max-width: 200px;
     height: 490px;
+    .title {
+        --max-lines: 1;
+        max-height: calc(1.4rem * var(--max-lines));
+        overflow: hidden;
+        display: inline-block;
+        padding-bottom: 1rem;
+    }
     .img-wrap {
         text-align: center;
     }
@@ -8,7 +15,7 @@
         display: flex;
         justify-content: space-around;
     }
-    .pairing {
+    .description {
         --max-lines: 3;
         max-height: calc(1.4rem * var(--max-lines));
         overflow: hidden;
