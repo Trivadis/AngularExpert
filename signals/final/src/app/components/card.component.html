@@ -1,5 +1,33 @@
 <div *ngIf="beer">
-    <div>{{beer.name}}</div>
-    <div><img [src]="beer.image_url" alt="" width="90"></div>
-    <div><span>Pairing: </span>{{beer.food_pairing}}</div>
+    <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title>{{beer.name}}</mat-card-title>
+        </mat-card-header>
+        <div class="img-wrap">
+            <img class="beer-img" mat-card-image [src]="beer.image_url" height="200" alt="Photo of a beer">
+        </div>
+        <mat-card-content>
+        <div class="flex-line">
+            <p>
+                <b>IBU: </b>{{beer.ibu}}
+            </p>
+            <p>
+                <b>ABV: </b>{{beer.abv}}%
+            </p>
+        </div>
+        <p>
+            <b>Origin: </b>{{beer.first_brewed}}
+        </p>
+          <p class="pairing">
+            {{beer.description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-icon-button [color]="isLiked ? 'accent' : 'basic'"  (click)="like()" aria-label="heart icon">
+              <mat-icon>favorite</mat-icon>
+            </button>
+        </mat-card-actions>
+      </mat-card>
+
+
 </div>
