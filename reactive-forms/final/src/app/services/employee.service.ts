@@ -9,12 +9,10 @@ import { FormFieldType } from '../models/form-field-types.enum';
   providedIn: 'root',
 })
 export class EmployeeService {
-  constructor() {}
-
   checkEmailUnique(email: string) {
     // service call for example
     return of(email).pipe(
-      delay(1000),
+      delay(1500),
       map((e) => e !== 'info@accenture.com')
     );
   }

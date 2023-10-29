@@ -76,6 +76,10 @@
             <span *ngIf="form?.hasError('nomatch')"> E-Mails must match. </span>
           </div>
         </div>
+        <ng-container *ngIf="email?.pending">
+          <div class="spinner-border text-primary" role="status"></div>
+          <strong> Checking provided email...</strong>
+        </ng-container>
         <div class="form-group">
           <button type="button" class="btn btn-ok btn-primary add-button form-button" (click)="addAddress()">
             Add Address
@@ -145,7 +149,6 @@
           <button type="button" class="btn btn-ok btn-primary form-button" (click)="submit()" [disabled]="!form.valid">
             Submit
           </button>
-          <span *ngIf="email?.pending"> Checking....</span>
         </div>
       </form>
     </div>
