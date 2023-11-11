@@ -1,4 +1,4 @@
-import { Component, OnInit, WritableSignal, computed, effect, inject, signal } from '@angular/core';
+import { Component, OnInit, WritableSignal, effect, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { BeerService } from './services/beer.service';
@@ -15,13 +15,14 @@ import {MatIconModule} from '@angular/material/icon';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  beerService = inject(BeerService);
   title = 'Signals Demo';
   favCount: WritableSignal<number> = signal(0);
   availableBeers$?: Observable<BeerResponse[]>;
-  beerService = inject(BeerService);
   shippingCost = '';
 
   constructor() {
+    // effect() can only be used within an injection context such as a constructor, a factory function, a field initializer.
     effect(() => {
       console.log(`The count is: ${this.favCount()}`);
       if (this.favCount() > 4) {
