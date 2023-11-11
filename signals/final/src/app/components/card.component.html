@@ -1,4 +1,5 @@
-<div *ngIf="beer">
+@if (beer) {
+<div>
     <mat-card class="card">
         <mat-card-header>
           <mat-card-title><span class="title">{{beer.name}}</span></mat-card-title>
@@ -31,3 +32,4 @@
 
 
 </div>
+}

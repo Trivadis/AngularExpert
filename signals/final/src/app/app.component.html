@@ -166,10 +166,14 @@
 </div>
 
 <div class="content" role="main">
-  <div *ngIf="availableBeers$ | async as beers" class="flex-center">
-    <div *ngFor="let beer of beers">
-      <app-card [beer]="beer" (onSelected)="addLike($event)"></app-card>
+  @if (availableBeers$ | async; as beers) {
+  <div class="flex-center">
+    @for (beer of beers; track beer.id) {
+      <div>
+        <app-card [beer]="beer" (onSelected)="addLike($event)"></app-card>
+      </div>
+    } 
     </div>
-  </div>
+  }
 </div>
 
