@@ -2,3 +2,4 @@ START TEMPLATE/
 pwa/final/backend/node_modules/
 .vscode/
 angular_pwa/final/backend/node_modules
+angular_pwa/start/backend/node_modules

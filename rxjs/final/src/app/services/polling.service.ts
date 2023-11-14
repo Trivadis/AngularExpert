@@ -28,9 +28,9 @@ export class PollingService {
           delay: 10000
         }),
         retry({
-          count: 3,
+          count: 2,
           delay: (error, count) => {
-           // Retry forever, but with an exponential step-back
+           // Retry 2 times, but with an exponential step-back
            // maxing out at 1 minute.
            console.log('Last resort...');
            
