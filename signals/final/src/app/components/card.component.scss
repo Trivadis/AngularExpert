@@ -14,6 +14,7 @@
     }
     .img-wrap {
         text-align: center;
+        min-height: 200px; // For the offline case
     }
     .flex-line {
         display: flex;
