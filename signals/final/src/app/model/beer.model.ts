@@ -1,6 +1,7 @@
 export interface BeerResponse {
     id: number
     name: string
+    price: number
     tagline: string
     first_brewed: string
     description: string
