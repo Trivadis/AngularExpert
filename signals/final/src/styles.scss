@@ -2,3 +2,19 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.full-width {
+    width: 100%;
+}
+.mobile-full-width {
+    @media screen and (max-width: 480px) {
+        width: 100%;
+    }
+}
+
+/* Override default material rules*/
+.mdc-text-field--filled:not(.mdc-text-field--disabled),
+.mdc-text-field--filled:hover,
+.mat-mdc-form-field-focus-overlay {
+    background-color: #fff !important;
+}

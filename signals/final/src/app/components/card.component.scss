@@ -1,6 +1,6 @@
 .card {
-    max-width: 200px;
-    height: 490px;
+    width: 200px;
+    // max-width: 200px;
     @media screen and (max-width: 480px) {
         width: 100%;
         max-width: none;
@@ -8,6 +8,7 @@
     .title {
         --max-lines: 1;
         max-height: calc(1.4rem * var(--max-lines));
+        text-align: center;
         overflow: hidden;
         display: inline-block;
         padding-bottom: 1rem;
@@ -18,12 +19,22 @@
     }
     .flex-line {
         display: flex;
-        justify-content: space-around;
+        .width-50 {
+            width: 50%;
+        }
+        &.price-row {
+            align-items: center;
+            height: 80px;
+            @media screen and (max-width: 480px) {
+                height: 50px;
+            }
+        }
     }
-    .description {
-        min-height: 70px;
-        --max-lines: 3;
-        max-height: calc(1.4rem * var(--max-lines));
-        overflow: hidden;
+    mat-card-actions {
+        border-top: 1px solid #e3e3e3;
+        padding: 8px;
+        background-color: #f5f5f5;
+        height: 40px;
+        min-height: auto6;
     }
 }
