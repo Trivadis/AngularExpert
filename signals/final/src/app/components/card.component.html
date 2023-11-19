@@ -1,35 +1,41 @@
 @if (beer) {
-<div>
-    <mat-card class="card">
-        <mat-card-header>
-          <mat-card-title><span class="title">{{beer.name}}</span></mat-card-title>
-        </mat-card-header>
-        <div class="img-wrap">
-            <img class="beer-img" mat-card-image [src]="beer.image_url" height="200" alt="Photo of a beer">
-        </div>
-        <mat-card-content>
-        <div class="flex-line">
-            <p>
-                <b>IBU: </b>{{beer.ibu}}
+      <mat-card class="card">
+          <mat-card-header>
+            <mat-card-title><span class="title">{{beer.name}}</span></mat-card-title>
+          </mat-card-header>
+          <div class="img-wrap">
+              <img class="beer-img" mat-card-image [src]="beer.image_url" height="200" alt="Photo of a beer">
+          </div>
+          <mat-card-content>
+          <div class="flex-line">
+              <p class="width-50">
+                  <b>IBU: </b>{{beer.ibu}}
+              </p>
+              <p class="width-50">
+                  <b>ABV: </b>{{beer.abv}}%
+              </p>
+          </div>
+          <div class="flex-line price-row">
+            <p class="width-50">
+                <b>Price: </b>{{beer.price | currency:'CHF'}}
             </p>
-            <p>
-                <b>ABV: </b>{{beer.abv}}%
-            </p>
-        </div>
-        <p>
-            <b>Price: </b>{{beer.price | currency:'CHF'}}
-        </p>
-          <p class="description">
-            {{beer.description}}
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-icon-button [color]="isLiked ? 'accent' : 'basic'"  (click)="like()" aria-label="heart icon">
-              <mat-icon>favorite</mat-icon>
-            </button>
-        </mat-card-actions>
+              <mat-form-field class="width-50">
+                <mat-label>Qty</mat-label>
+                <mat-select [value]="qtySelected" (valueChange)="updateQty($event)">
+                  @for (qty of ordersQuantity; track $index) {
+                    <mat-option [value]="qty">{{qty}}</mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+          </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-icon-button [color]="isLiked ? 'accent' : 'basic'"  (click)="like()" aria-label="heart icon">
+                <mat-icon>favorite</mat-icon>
+              </button>
+            <button mat-icon-button (click)="setInCart()" aria-label="heart icon">
+                <mat-icon [ngStyle]="{color: isInCart ? '#55ac59' : '#000'}">shopping_cart</mat-icon>
+              </button>
+          </mat-card-actions>
       </mat-card>
-
-
-</div>
 }

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { BeerService } from './services/beer.service';
 import { Observable } from 'rxjs';
-import { BeerResponse } from './model/beer.model';
+import { BeerResponse, SelectedBeer } from './model/beer.model';
 import { CardComponent } from './components/card.component';
 import {MatIconModule} from '@angular/material/icon';
 
@@ -12,7 +12,7 @@ import {MatIconModule} from '@angular/material/icon';
   standalone: true,
   imports: [CommonModule, RouterOutlet, CardComponent, MatIconModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   beerService = inject(BeerService);
@@ -39,5 +39,9 @@ export class AppComponent implements OnInit {
 
   addLike(isLike: boolean) {
     this.favCount.update(count => isLike ? count + 1 : count - 1);
+  }
+
+  setInCart(data: SelectedBeer) {
+    console.log({data});
   }
 }

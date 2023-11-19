@@ -55,11 +55,9 @@
 
 
   .content {
-    display: flex;
     margin: 82px auto 32px;
     padding: 0 16px 32px 16px;
     max-width: 2048px;
-    width: 90%;
   }
 
   svg.material-icons {
@@ -169,11 +167,11 @@
   @if (availableBeers$ | async; as beers) {
   <div class="flex-center">
     @for (beer of beers; track beer.id) {
-      <div>
-        <app-card [beer]="beer" (onSelected)="addLike($event)"></app-card>
-      </div>
+      <app-card class="mobile-full-width" [beer]="beer" (onLiked)="addLike($event)" (onSetInCart)="setInCart($event)"></app-card>
     } 
     </div>
+  } @else {
+    <h2>Oh snap! No beers avaiable this time...</h2>
   }
 </div>
 

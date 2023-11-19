@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
 import { BeerResponse } from '../model/beer.model';
 import offlineMock from './offline_response.json';
@@ -8,8 +8,11 @@ import offlineMock from './offline_response.json';
   providedIn: 'root'
 })
 export class BeerService {
-  private readonly API_URL = 'https://api.punkapi.com/v2/beers';
   httpClient = inject(HttpClient);
+  private readonly API_URL = 'https://api.punkapi.com/v2/beers';
+  selectedBeers = signal<BeerResponse[]>([]);
+
+
 
   getBeerList(): Observable<BeerResponse[]> {
     return this.httpClient.get<BeerResponse[]>(this.API_URL)
@@ -23,7 +26,7 @@ export class BeerService {
     );
   }
 
-  // The API does not return prices
+  // The API does not return prices, so we set random prices for the demo.
   private setRandomPrices(items: BeerResponse[]) {
     return items.map(item => {
       item.price = Math.floor(Math.random() * 20) + 1;
