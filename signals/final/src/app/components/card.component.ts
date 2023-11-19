@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { BeerResponse, SelectedBeer } from '../model/beer.model';
+import { BeerItem } from '../model/beer.model';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
@@ -15,9 +15,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   styleUrl: './card.component.scss'
 })
 export class CardComponent {
-  @Input({ required: true }) beer!: BeerResponse;
+  @Input({ required: true }) beer!: BeerItem;
   @Output() onLiked = new EventEmitter<boolean>();
-  @Output() onSetInCart = new EventEmitter<SelectedBeer>();
+  @Output() onSetInCart = new EventEmitter<{beerItem: Partial<BeerItem>, isInCart: boolean}>();
+  @Output() onQtyUpdate = new EventEmitter<{id: number, qty: number}>();
 
   isLiked = false;
   isInCart = false;
@@ -31,11 +32,14 @@ export class CardComponent {
 
   setInCart() {
     this.isInCart = !this.isInCart;
-    this.onSetInCart.emit({ addToCart: this.isInCart, id: this.beer.id, price: this.beer.price, qty: this.qtySelected });
+    this.onSetInCart.emit({beerItem: {id: this.beer.id, qty: this.qtySelected, price: this.beer.price}, isInCart: this.isInCart});
+    if (!this.isInCart){
+      this.qtySelected = 1; 
+    }
   }
 
   updateQty(qtySelected: number) {
-    this.isInCart && this.onSetInCart.emit({ addToCart: this.isInCart, id: this.beer.id, price: this.beer.price, qty: qtySelected });
+    this.isInCart && this.onQtyUpdate.emit({id: this.beer.id, qty: qtySelected});
   }
 
 }

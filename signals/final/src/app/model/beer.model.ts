@@ -1,7 +1,8 @@
-export interface BeerResponse {
+export interface BeerItem {
     id: number
     name: string
     price: number
+    qty?:number
     tagline: string
     first_brewed: string
     description: string
@@ -22,13 +23,6 @@ export interface BeerResponse {
     brewers_tips: string
     contributed_by: string
   }
-
-export interface SelectedBeer {
-  addToCart: boolean
-  id:number
-  price: number
-  qty: number
-}
   
   export interface Volume {
     value: number

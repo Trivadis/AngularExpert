@@ -47,12 +47,31 @@
     display: block;
     position: relative;
     margin-right: 4rem;
+    @media screen and (max-width: 480px) {
+      margin: 0 2rem;
+    }
+  }
+
+  .title {
+    @media screen and (max-width: 480px) {
+      display: none;
+    }
+  }
+
+
+  .cart-total {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+
+    @media screen and (max-width: 480px) {
+      margin-right: 0;
+    }
   }
 
   .discount {
     width: 130px;
   }
-
 
   .content {
     margin: 82px auto 32px;
@@ -143,35 +162,34 @@
   a:hover {
     color: #125699;
   }
-
-
 </style>
 
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <img
-    width="40"
-    alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
-  />
-  <span>Angular Signals</span>
-    <div class="spacer"></div>
-    <span class="fav-counter" title="Favorite beers">
-      <mat-icon class="fav-icon">favorite</mat-icon>
-      <span class="fav-count">{{favCount()}}</span>
-    </span>
-    <span class="span-counter discount">Shipping: {{shippingCost}}</span>
+  <img width="40" alt="Angular Logo"
+    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
+  <span class="title">Angular Signals</span>
+  <div class="spacer"></div>
+  <div class="cart-total">
+    <mat-icon>shopping_cart</mat-icon>
+    <span>{{cartTotal() | currency: 'CHF'}}</span>
+  </div>
+  <span class="fav-counter" title="Favorite beers">
+    <mat-icon class="fav-icon">favorite</mat-icon>
+    <span class="fav-count">{{favCount()}}</span>
+  </span>
+  <span class="span-counter discount">Shipping: {{shippingCost}}</span>
 </div>
 
 <div class="content" role="main">
   @if (availableBeers$ | async; as beers) {
   <div class="flex-center">
     @for (beer of beers; track beer.id) {
-      <app-card class="mobile-full-width" [beer]="beer" (onLiked)="addLike($event)" (onSetInCart)="setInCart($event)"></app-card>
-    } 
-    </div>
+    <app-card class="mobile-full-width" [beer]="beer" (onLiked)="updateFav($event)" (onSetInCart)="setInCart($event)"
+      (onQtyUpdate)="updateQty($event)"></app-card>
+    }
+  </div>
   } @else {
-    <h2>Oh snap! No beers avaiable this time...</h2>
+  <h2>Oh snap! No beers avaiable this time...</h2>
   }
 </div>
-

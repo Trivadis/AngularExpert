@@ -1,9 +1,9 @@
-import { Component, OnInit, WritableSignal, effect, inject, signal } from '@angular/core';
+import { Component, OnInit, Signal, WritableSignal, effect, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { BeerService } from './services/beer.service';
 import { Observable } from 'rxjs';
-import { BeerResponse, SelectedBeer } from './model/beer.model';
+import { BeerItem } from './model/beer.model';
 import { CardComponent } from './components/card.component';
 import {MatIconModule} from '@angular/material/icon';
 
@@ -17,8 +17,9 @@ import {MatIconModule} from '@angular/material/icon';
 export class AppComponent implements OnInit {
   beerService = inject(BeerService);
   title = 'Signals Demo';
-  favCount: WritableSignal<number> = signal(0);
-  availableBeers$?: Observable<BeerResponse[]>;
+  favCount: WritableSignal<number> = this.beerService.favCount;
+  cartTotal: Signal<number> = this.beerService.cartTotal;
+  availableBeers$?: Observable<BeerItem[]>;
   shippingCost = '';
 
   constructor() {
@@ -37,11 +38,24 @@ export class AppComponent implements OnInit {
     this.availableBeers$ = this.beerService.getBeerList();
   }
 
-  addLike(isLike: boolean) {
-    this.favCount.update(count => isLike ? count + 1 : count - 1);
+  updateFav(isLike: boolean) {
+    this.beerService.updateFavCount(isLike);
   }
 
-  setInCart(data: SelectedBeer) {
-    console.log({data});
+  setInCart(data: {beerItem: Partial<BeerItem>, isInCart: boolean}) {
+    const {beerItem, isInCart} = data;
+    if (!isInCart) {
+      this.beerService.selectedBeers.update(selectedBeers => 
+        selectedBeers.filter(sb => sb.id !== beerItem.id));
+    } else {
+      this.beerService.selectedBeers.update((beerItems) => [...beerItems, beerItem])
+    }
+
+    console.log(this.beerService.selectedBeers());
+  }
+
+  updateQty(updatedQty: {id: number, qty: number}) {
+    this.beerService.selectedBeers.update(selectedBeers => 
+      selectedBeers.map(sb => (sb.id === updatedQty.id) ? {...sb, qty: updatedQty.qty} : sb));
   }
 }

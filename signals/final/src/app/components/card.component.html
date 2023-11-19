@@ -21,7 +21,7 @@
             </p>
               <mat-form-field class="width-50">
                 <mat-label>Qty</mat-label>
-                <mat-select [value]="qtySelected" (valueChange)="updateQty($event)">
+                <mat-select [(value)]="qtySelected" (valueChange)="updateQty($event)">
                   @for (qty of ordersQuantity; track $index) {
                     <mat-option [value]="qty">{{qty}}</mat-option>
                   }
