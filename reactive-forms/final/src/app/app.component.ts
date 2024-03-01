@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
           [Validators.required, EmployeeValidators.emailValidator],
         ],
         addresses: this.fb.array([]),
-        rating: [],
+        rating: 0,
       },
       {
         validators: EmployeeValidators.checkEmailsMatch,
