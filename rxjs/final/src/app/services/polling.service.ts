@@ -31,10 +31,10 @@ export class PollingService {
           count: 2,
           delay: (error, count) => {
            // Retry 2 times, but with an exponential step-back
-           // maxing out at 1 minute.
+           // maxing out at 30 secs.
            console.log('Last resort...');
            
-           return timer(Math.min(60000, 2 ^ count * 1000))
+           return timer(Math.min(30000, 2 ^ count * 1000))
           },
         })
       )

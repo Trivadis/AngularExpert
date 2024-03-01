@@ -64,8 +64,8 @@ app.post('/notifications/subscribe', (req, res) => {
 
             // Send a notification every 10 seconds
             webpush.sendNotification(subscription, JSON.stringify(notificationMsg))
-                .catch(() => {
-                    console.error("Failed to send notification");
+                .catch((error) => {
+                    console.error("Failed to send notification - ", error);
                     clearInterval(pushIntervalID);
                 })
         }, 10000)
@@ -84,4 +84,4 @@ app.delete("/notifications/unsubscribe", (req, res) => {
 });
 
 
-app.listen(3000, () => console.log('listening on port 3000'))
+app.listen(3600, () => console.log('listening on port 3600'))
