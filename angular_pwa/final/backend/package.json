@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server.js --config nodemon.json"
   },
-  "author": "francesco.leardini@accenture.com",
+  "author": "francesco",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
